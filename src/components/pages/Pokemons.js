@@ -1,9 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
+import PoContainer from "../PoContainer";
+import axios from "axios";
 
-export default function Pokemons() {
-  return (
-    <React.Fragment>
-      <h1>here comes da pokamonz</h1>
-    </React.Fragment>
-  );
+export default class Pokemons extends Component {
+  state = {
+    pokemons: [],
+  };
+
+  componentDidMount() {
+    axios
+      .get("https://pokeapi.co/api/v2/pokemon")
+      .then((res) => this.setState({ pokemons: res.data.results }));
+  }
+  render() {
+    console.log(this.state.pokemons);
+    return (
+      <div className="card-container">
+        <PoContainer pokemons={this.state.pokemons} />
+      </div>
+    );
+  }
 }
