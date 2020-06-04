@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
-export default class TypeItem extends Component {
-  render() {
-    return (
-      <div className="pokeCard">
-        <div className="card-name">{this.props.type.name}</div>
-      </div>
-    );
-  }
-}
-
-TypeItem.propTypes = {
-  type: PropTypes.object.isRequired,
+const TypeItem = (props) => {
+  return (
+    <div className="pokeCard">
+      <div className="card-name">{props.type.name}</div>
+    </div>
+  );
 };
+
+// TypeItem.propTypes = {
+//  type: PropTypes.object.isRequired,
+// };
+
+export default React.memo(TypeItem);
