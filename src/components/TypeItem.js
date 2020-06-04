@@ -8,8 +8,4 @@ const TypeItem = (props) => {
   );
 };
 
-// TypeItem.propTypes = {
-//  type: PropTypes.object.isRequired,
-// };
-
 export default React.memo(TypeItem);
