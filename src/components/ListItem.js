@@ -1,32 +1,27 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { Link } from "react-router-dom";
 
-export default class ListItem extends Component {
-  render() {
-    const { name, url } = this.props.pokemon;
+const ListItem = (props) => {
+  const { name, url } = props.pokemon;
 
-    const newUrl = url.substr(26);
+  const newUrl = url.substr(26);
 
-    return (
-      <div className="pokeCard">
-        <div className="card-name">{name}</div>
-        <Link
-          className="card-link"
-          to={{
-            pathname: newUrl,
-            state: {
-              pokurl: this.props.pokemon.url,
-            },
-          }}
-        >
-          check me out
-        </Link>
-      </div>
-    );
-  }
-}
-
-ListItem.propTypes = {
-  pokemon: PropTypes.object.isRequired,
+  return (
+    <div className="pokeCard">
+      <div className="card-name">{name}</div>
+      <Link
+        className="card-link"
+        to={{
+          pathname: newUrl,
+          state: {
+            pokurl: props.pokemon.url,
+          },
+        }}
+      >
+        check me out
+      </Link>
+    </div>
+  );
 };
+
+export default React.memo(ListItem);
