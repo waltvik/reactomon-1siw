@@ -13,7 +13,6 @@ export default class Pokemons extends Component {
       .then((res) => this.setState({ pokemons: res.data.results }));
   }
   render() {
-    console.log(this.state.pokemons);
     return (
       <div className="card-container">
         <PoContainer pokemons={this.state.pokemons} />

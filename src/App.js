@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Pokemons from "./components/pages/Pokemons";
 import Types from "./components/pages/Types";
+import PokemonsDetail from "./components/pages/PokemonDetail";
+
 import "./App.css";
 
 export default class App extends Component {
@@ -21,8 +23,9 @@ export default class App extends Component {
                 </React.Fragment>
               )}
             />
-            <Route path="/Pokemons" component={Pokemons} />
-            <Route path="/Types" component={Types} />
+            <Route path="/pokemons" component={Pokemons} />
+            <Route path="/types" component={Types} />
+            <Route path="/pokemon/" component={PokemonsDetail} />
           </div>
         </div>
       </Router>
