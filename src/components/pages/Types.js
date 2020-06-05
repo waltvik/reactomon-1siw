@@ -1,22 +1,22 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import TypeContainer from "../TypeContainer";
 import axios from "axios";
 
-export default class Types extends Component {
-  state = {
-    types: [],
-  };
-  componentDidMount() {
+const Types = () => {
+  const [types, setTypes] = useState([]);
+
+  useEffect(() => {
     axios
-      .get("https://https:/pokeapi.co/api/v2/type")
-      .then((res) => this.setState({ types: res.data.results }));
-  }
-  render() {
-    console.log("types in Types" + this.state.types);
-    return (
-      <div className="card-container">
-        <TypeContainer types={this.state.types} />
-      </div>
-    );
-  }
-}
+      .get("https://pokeapi.co/api/v2/type")
+      .then((res) => setTypes(res.data.results));
+  }, []);
+
+  console.log("types in Types" + types);
+  return (
+    <div className="card-container">
+      <TypeContainer types={types} />
+    </div>
+  );
+};
+
+export default React.memo(Types);
