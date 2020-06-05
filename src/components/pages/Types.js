@@ -11,7 +11,6 @@ const Types = () => {
       .then((res) => setTypes(res.data.results));
   }, []);
 
-  console.log("types in Types" + types);
   return (
     <div className="card-container">
       <TypeContainer types={types} />
