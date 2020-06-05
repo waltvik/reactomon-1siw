@@ -1,22 +1,21 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PoContainer from "../PoContainer";
 import axios from "axios";
 
-export default class Pokemons extends Component {
-  state = {
-    pokemons: [],
-  };
+const Pokemons = () => {
+  const [pokemons, setPokemons] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     axios
       .get("https://pokeapi.co/api/v2/pokemon")
-      .then((res) => this.setState({ pokemons: res.data.results }));
-  }
-  render() {
-    return (
-      <div className="card-container">
-        <PoContainer pokemons={this.state.pokemons} />
-      </div>
-    );
-  }
-}
+      .then((res) => setPokemons(res.data.results));
+  }, []);
+
+  return (
+    <div className="card-container">
+      <PoContainer pokemons={pokemons} />
+    </div>
+  );
+};
+
+export default React.memo(Pokemons);
