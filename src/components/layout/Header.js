@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+const Header = () => {
   return (
     <header className="headerMain">
       <h1>Reactomon</h1>
@@ -18,4 +18,6 @@ export default function Header() {
       </Link>
     </header>
   );
-}
+};
+
+export default React.memo(Header);
