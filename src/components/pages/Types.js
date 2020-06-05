@@ -8,7 +8,7 @@ export default class Types extends Component {
   };
   componentDidMount() {
     axios
-      .get("https://pokeapi.co/api/v2/type")
+      .get("https://https:/pokeapi.co/api/v2/type")
       .then((res) => this.setState({ types: res.data.results }));
   }
   render() {
