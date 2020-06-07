@@ -1,4 +1,4 @@
 [build]
-base = "myapp/"
-publish = "myapp/build/"
+base = "reactomon-1siw/"
+publish = "reactomon-1siw/build/"
 command = "npm run build"
