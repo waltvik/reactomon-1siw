@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Pokemons from "./components/pages/Pokemons";
 import Types from "./components/pages/Types";
 import PokemonsDetail from "./components/pages/PokemonDetail";
 import styled /*, { ThemeProvider, css }*/ from "styled-components";
+import ThemeContext from "./ThemeContext";
 
 import "./App.css";
 
@@ -21,27 +22,31 @@ const H2 = styled.h1`
 `;
 
 const App = () => {
+  const themeHook = useState("light");
   return (
-    <Router>
-      <div className="App">
-        <div className="container">
-          <Header />
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <React.Fragment>
-                <H1>Welcome?</H1>
-                <H2>You gotta catch them all...</H2>
-              </React.Fragment>
-            )}
-          />
-          <Route path="/pokemons" component={Pokemons} />
-          <Route path="/types" component={Types} />
-          <Route path="/pokemon/" component={PokemonsDetail} />
+    <ThemeContext.Provider value={themeHook}>
+      <Router>
+        <div className="App">
+          <div className="container">
+            <Header />
+
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <React.Fragment>
+                  <H1>Welcome?</H1>
+                  <H2>You gotta catch them all...</H2>
+                </React.Fragment>
+              )}
+            />
+            <Route path="/pokemons" component={Pokemons} />
+            <Route path="/types" component={Types} />
+            <Route path="/pokemon/" component={PokemonsDetail} />
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </ThemeContext.Provider>
   );
 };
 
