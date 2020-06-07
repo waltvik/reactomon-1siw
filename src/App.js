@@ -4,8 +4,21 @@ import Header from "./components/layout/Header";
 import Pokemons from "./components/pages/Pokemons";
 import Types from "./components/pages/Types";
 import PokemonsDetail from "./components/pages/PokemonDetail";
+import styled /*, { ThemeProvider, css }*/ from "styled-components";
 
 import "./App.css";
+
+const H1 = styled.h1`
+  text-align: center;
+  font-size: 4rem;
+  color: #3b4255;
+`;
+
+const H2 = styled.h1`
+  text-align: center;
+  font-size: 2rem;
+  color: #3b4255;
+`;
 
 const App = () => {
   return (
@@ -18,7 +31,8 @@ const App = () => {
             path="/"
             render={() => (
               <React.Fragment>
-                <h1>Welcome?</h1>
+                <H1>Welcome?</H1>
+                <H2>You gotta catch them all...</H2>
               </React.Fragment>
             )}
           />
